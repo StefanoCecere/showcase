@@ -33,7 +33,6 @@
 						</TCEforms>
 					</switchableControllerActions>
 
-					<!-- startingpoint  -->
 					<settings.startingpoint>
 						<TCEforms>
 							<label>Category</label>
@@ -48,6 +47,16 @@
 							</config>
 						</TCEforms>
 					</settings.startingpoint>
+
+					<settings.black>
+						<TCEforms>
+							<label>Sfondo nero</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.black>
+
 				</el>
 			</ROOT>
 		</sDEF>

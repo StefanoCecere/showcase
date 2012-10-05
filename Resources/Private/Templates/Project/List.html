@@ -1,7 +1,14 @@
 <f:layout name="Default" />
 
 <f:section name="main">
+<f:if condition="{black}">
+	<f:then>
+<div class="span-24 last main_content-black">
+	</f:then>
+	<f:else>
 <div class="span-24 last">
+	</f:else>
+</f:if>
 	<div class="contenuto">
 	<f:for each="{categories}" as="category">
 		<div class="loop-projects">

@@ -68,6 +68,7 @@ class Tx_Showcase_Controller_ProjectController extends Tx_Extbase_MVC_Controller
 //		$projects = $this->projectRepository->findProjects($this->settings['startingpoint']);
 //		$this->view->assign('projects', $projects);
 		$categories = $this->categoryRepository->findByPid($this->settings['startingpoint']);
+		$this->view->assign('black', $this->settings['black']);
 		$this->view->assign('categories', $categories);
 	}
 
@@ -79,6 +80,7 @@ class Tx_Showcase_Controller_ProjectController extends Tx_Extbase_MVC_Controller
 	 */
 	public function showAction(Tx_Showcase_Domain_Model_Project $project) {
 		$categories = $this->categoryRepository->findByPid($this->settings['startingpoint']);
+		$this->view->assign('black', $this->settings['black']);
 		$this->view->assign('categories', $categories);
 		$this->view->assign('project', $project);
 	}

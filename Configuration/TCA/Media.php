@@ -9,8 +9,8 @@ $TCA['tx_showcase_domain_model_media'] = array(
 		'showRecordFieldList'	=> 'type,title',
 	),
 	'types' => array(
-		'1' => array('showitem'	=> 'type,title,code,date,description,image'),
-		'2' => array('showitem'	=> 'type,title,code,date,description,image,video'),
+		'1' => array('showitem'	=> 'project,type,title,code,date,description,image'),
+		'2' => array('showitem'	=> 'project,type,title,code,date,description,image,video'),
 	),
 	'palettes' => array(
 		'1' => array('showitem'	=> ''),
@@ -150,7 +150,12 @@ $TCA['tx_showcase_domain_model_media'] = array(
 		),
 		'project' => array(
 			'config' => array(
-				'type'	=> 'passthrough',
+				'type' => 'select',
+				'foreign_table' => 'tx_showcase_domain_model_project',
+				'foreign_table_where' => 'AND tx_showcase_domain_model_project.pid=###CURRENT_PID### AND tx_showcase_domain_model_project.sys_language_uid IN (-1,0)',
+				'size' => 1,
+				'maxitems' => 1,
+				'eval' => ''
 			),
 		),
 	),
