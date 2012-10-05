@@ -1,0 +1,34 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+<div class="span-24 last">
+	<div class="contenuto">
+	<f:for each="{categories}" as="category">
+		<div class="loop-projects">
+			
+			<h5 class="grey"><f:if condition="{category.invisible} == 0">{category.title}</f:if></h5>
+
+			<f:for each="{category.projects}" as="project">
+			<div class="mosaic-block bar">
+				<f:link.action action="show" arguments="{project : project}" class="mosaic-overlay">
+					<div class="details">
+						<h4>{project.title}</h4>
+					</div>
+				</f:link.action>
+				
+				<f:link.action action="show" arguments="{project : project}" class="mosaic-backdrop">
+					<f:image src="uploads/showcase/project/{project.image}"
+						width="120c"
+						height="120c"
+						title="{project.title}"
+						alt="{project.title}"
+					/>
+				</f:link.action>
+			</div>
+			</f:for>
+		</div>
+		<div class="clear"></div>
+	</f:for>
+	</div>
+</div>
+</f:section>

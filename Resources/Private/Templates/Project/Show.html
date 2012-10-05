@@ -1,0 +1,134 @@
+{namespace k=Tx_Krur_ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<k:rawHeader content='
+<link rel="stylesheet" href="typo3conf/ext/showcase/Resources/Public/plugins/flexslider/flexslider.css" type="text/css" media="screen" />
+<script type="text/javascript" src="typo3conf/ext/showcase/Resources/Public/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+	$(".media-thumbs a").click(function(e){
+		e.preventDefault();
+		sel = parseInt($(this).attr("rel"));
+
+		$(".flexslider").flexslider(sel);
+	});
+
+	var index = 0, hash = window.location.hash;
+	if (hash) {
+		index = /\d+/.exec(hash)[0];
+		index = (parseInt(index) || 1) - 1;
+	}
+	
+	$(".flexslider").flexslider({
+		"video" : true,
+		"startAt": index,
+		"animation": "slide",
+		"after":function(slider){
+			window.location.hash = slider.currentSlide + 1;
+		}
+	});
+});
+</script>
+'/>
+
+<div id="submenu" class="span-24 last">
+	<div class="contenuto">
+		<ul id="nav" class="dropdown dropdown-horizontal">
+		<f:for each="{categories}" as="category">
+			<f:if condition="{category.uid} == {project.category.uid}">
+				<f:then>
+					<li class="dir active">
+				</f:then>
+				<f:else>
+					<li class="dir">
+				</f:else>
+			</f:if>
+				<f:link.page>{category.title}</f:link.page>
+				<ul>
+				<f:for each="{category.projects}" as="projectmenu">
+					<f:if condition="{projectmenu.uid} == {project.uid}">
+						<f:then>
+							<li class="active">
+						</f:then>
+						<f:else>
+							<li>
+						</f:else>
+					</f:if>
+						<f:link.action action="show" arguments="{project : projectmenu}">
+						{projectmenu.title}
+						</f:link.action>
+					</li>
+				</f:for>
+				</ul>
+			</li>
+		</f:for>
+		</ul>
+	</div>
+</div>
+<div class="span-24 last">
+	<div class="contenuto">
+		<h3>
+			{project.title}
+		</h3>
+		<div class="media-thumbs">
+			<f:for each="{project.media}" as="media" iteration="Iterator">
+				<div class="mosaic-block-media">
+						<a href="#" rel="{Iterator.index}">
+						<f:image src="uploads/showcase/media/{media.image}"
+							width="75c"
+							height="75c"
+							title="{media.title}"
+							alt="{media.title}"
+							
+						/>
+						</a>
+					
+				</div>
+			</f:for>
+		</div>
+
+	<div class="media">
+		<div class="flexslider">
+			<ul class="slides">
+			<f:for each="{project.media}" as="media">
+				<li>
+					<a href="uploads/showcase/media/{media.image}" rel="shadowbox[media-1];player=img;" title="{media.title}" target="_blank">
+					<div class"padder">
+						<f:image src="uploads/showcase/media/{media.image}"
+							maxWidth="600"
+							height="400c-50"
+							title="{media.title}"
+							alt="{media.title}"
+						/>
+					</div>
+					</a>
+				</li>
+			</f:for>
+			</ul>
+		</div>
+
+		<div class="mediainfo">
+			<div class="socialize">
+				<k:facebook.share>Share</k:facebook.share>
+				<br />
+				<span class="ask">
+				<f:link.page pageUid="12" additionalParams="{tx_powermail_pi1: {uid6: '{project.uid}',uid5: 'Sale'}}" noCacheHash="1">ask for info/sale</f:link.page>
+				</span>
+			</div>
+			<f:comment>
+			<!--
+			<h3>{selectedMedia.title}</h3>
+			<f:if condition="{selectedMedia.date}">
+				<p>{selectedMedia.date}</p>
+			</f:if>
+			<p>{selectedMedia.description->f:format.nl2br()}</p>
+			-->
+			</f:comment>
+			<p>{project.description->f:format.nl2br()}</p>	
+		</div>
+	</div>
+</div>
+</f:section>

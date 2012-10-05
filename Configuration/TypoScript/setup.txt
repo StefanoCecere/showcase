@@ -1,0 +1,14 @@
+plugin.tx_showcase { 
+	view {
+		templateRootPath = {$plugin.tx_showcase.view.templateRootPath}
+		partialRootPath = {$plugin.tx_showcase.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_showcase.view.layoutRootPath}
+	}
+	settings {
+		object {
+			media {
+				image.path = uploads/showcase/media/
+			}
+		}
+	}
+}

@@ -1,0 +1,92 @@
+{namespace n=Tx_Pet_ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+<div id="submenu" class="span-24 last">
+	<div class="contenuto">
+		<ul id="nav" class="dropdown dropdown-horizontal">
+		<f:for each="{categories}" as="category">
+			<f:if condition="{category.uid} == {project.category.uid}">
+				<f:then>
+					<li class="dir active">
+				</f:then>
+				<f:else>
+					<li class="dir">
+				</f:else>
+			</f:if>
+				<f:link.page>{category.title}</f:link.page>
+				<ul>
+				<f:for each="{category.projects}" as="projectmenu">
+					<f:if condition="{projectmenu.uid} == {project.uid}">
+						<f:then>
+							<li class="active">
+						</f:then>
+						<f:else>
+							<li>
+						</f:else>
+					</f:if>
+						<f:link.action action="show" arguments="{project : projectmenu}">
+						{projectmenu.title}
+						</f:link.action>
+					</li>
+				</f:for>
+				</ul>
+			</li>
+		</f:for>
+		</ul>
+	</div>
+</div>
+<div class="span-24 last">
+	<div class="contenuto">
+	<h3>{project.title}</h3>
+	<div class="media-thumbs">
+		<f:for each="{project.media}" as="media">
+			<div class="mosaic-block-media">
+				<f:link.action action="showMedia" arguments="{project : project, media : media}">
+					<f:image src="uploads/pet/media/{media.image}"
+						width="75c"
+						height="75c"
+						title="{media.title}"
+						alt="{media.title}"
+					/>
+				</f:link.action>
+			</div>
+		</f:for>
+	</div>
+	
+	<div class="media">
+		<f:if condition="{selectedMedia.type} == 1">
+		<a href="uploads/pet/media/{selectedMedia.image}" rel="shadowbox[media-1];player=img;" title="{selectedMedia.title}" target="_blank">
+		<f:image src="uploads/pet/media/{selectedMedia.image}"
+			maxHeight="400"
+			maxWidth="600"
+			title="{selectedMedia.title}"
+			alt="{selectedMedia.title}"
+		/>
+		</a>
+		</f:if>
+
+		<f:if condition="{selectedMedia.type} == 2">
+		<iframe src="http://player.vimeo.com/video/{selectedMedia.video}?title=0&amp;byline=0&amp;portrait=0&amp;color=000000&amp;autoplay=1" width="600" height="450" frameborder="0"></iframe>
+		</f:if>
+<div class="mediainfo">
+		<div class="socialize">
+			<n:facebook.share>Share</n:facebook.share>
+			<br />
+			<span class="ask">
+			<f:link.page pageUid="12" additionalParams="{tx_powermail_pi1: {uid6: '{selectedMedia.code}',uid5: 'Sale'}}" noCacheHash="1">
+			ask for info/sale
+			</f:link.page>
+			</span>
+		</div>
+		<h3>{selectedMedia.title}</h3>
+		<f:if condition="{selectedMedia.date}">
+		<p>{selectedMedia.date}</p>
+		</f:if>
+		<p>{selectedMedia.description->f:format.nl2br()}</p>
+</div>
+		</div>
+	</div>
+</div>
+</f:section>

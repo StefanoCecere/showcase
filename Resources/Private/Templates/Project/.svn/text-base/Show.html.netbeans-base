@@ -1,0 +1,63 @@
+<f:layout name="Default" />
+
+<f:section name="main">	
+<div id="submenu" class="span-24 last">
+	<div class="contenuto">
+		<ul id="nav" class="dropdown dropdown-horizontal">
+		<f:for each="{categories}" as="category">
+			<f:if condition="{category.uid} == {project.category.uid}">
+				<f:then>
+					<li class="dir active">
+				</f:then>
+				<f:else>
+					<li class="dir">
+				</f:else>
+			</f:if>
+				<f:link.page>{category.title}</f:link.page>
+				<ul>
+				<f:for each="{category.projects}" as="projectmenu">
+					<f:if condition="{projectmenu.uid} == {project.uid}">
+						<f:then>
+							<li class="active">
+						</f:then>
+						<f:else>
+							<li>
+						</f:else>
+					</f:if>
+						<f:link.action action="show" arguments="{project : projectmenu}">
+						{projectmenu.title}
+						</f:link.action>
+					</li>
+				</f:for>
+				</ul>
+			</li>
+		</f:for>
+		</ul>
+	</div>
+</div>
+<div class="span-24 last">
+	<div class="contenuto">
+		<h3>
+			{project.title}
+		</h3>
+		<div class="media-thumbs">
+			<f:for each="{project.media}" as="media">
+				<div class="mosaic-block-media">
+					<f:link.action action="showMedia" arguments="{project : project, media : media}">
+						<f:image src="uploads/pet/media/{media.image}"
+							width="75c"
+							height="75c"
+							title="{media.title}"
+							alt="{media.title}"
+						/>
+					</f:link.action>
+				</div>
+			</f:for>
+		</div>
+
+		<div class="media">
+			{project.description->f:format.nl2br()}		
+		</div>
+	</div>
+</div>
+</f:section>
