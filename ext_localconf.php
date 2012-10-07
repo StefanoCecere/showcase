@@ -10,9 +10,9 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 			'Category' => 'list, show', 
 			'Media' => 'list, show',
 		), array(
-			'Project' => 'list, show, showMedia', 
-			'Category' => 'list, show', 
-			'Media' => 'list, show', 
+			'Project' => '', 
+			'Category' => '', 
+			'Media' => '', 
 		)
 );
 ?>

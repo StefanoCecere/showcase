@@ -81,6 +81,7 @@ class Tx_Showcase_Controller_ProjectController extends Tx_Extbase_MVC_Controller
 	public function showAction(Tx_Showcase_Domain_Model_Project $project) {
 		$categories = $this->categoryRepository->findByPid($this->settings['startingpoint']);
 		$this->view->assign('black', $this->settings['black']);
+		$this->view->assign('isVideo', $this->settings['video']);
 		$this->view->assign('categories', $categories);
 		$this->view->assign('project', $project);
 	}

@@ -9,8 +9,8 @@ $TCA['tx_showcase_domain_model_media'] = array(
 		'showRecordFieldList'	=> 'type,title',
 	),
 	'types' => array(
-		'1' => array('showitem'	=> 'project,type,title,code,date,description,image'),
-		'2' => array('showitem'	=> 'project,type,title,code,date,description,image,video'),
+		'1' => array('showitem'	=> 'hidden,project,type,highlight,title,code,date,description,image'),
+		'2' => array('showitem'	=> 'hidden,project,type,title,code,date,description,image,video'),
 	),
 	'palettes' => array(
 		'1' => array('showitem'	=> ''),
@@ -76,13 +76,20 @@ $TCA['tx_showcase_domain_model_media'] = array(
 				'eval' => 'required'
 			),
 		),
+		'highlight' => array(
+			'exclude'	=> 1,
+			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_media.highlight',
+			'config'	=> array(
+				'type'	=> 'check',
+			)
+		),
 		'title' => array(
 			'exclude'	=> 0,
 			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_media.title',
 			'config'	=> array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'trim,required'
+				'eval' => 'trim'
 			),
 		),
 		'code' => array(
@@ -149,10 +156,11 @@ $TCA['tx_showcase_domain_model_media'] = array(
 			),
 		),
 		'project' => array(
+			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_project',
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_showcase_domain_model_project',
-				'foreign_table_where' => 'AND tx_showcase_domain_model_project.pid=###CURRENT_PID### AND tx_showcase_domain_model_project.sys_language_uid IN (-1,0)',
+				'foreign_table_where' => 'AND tx_showcase_domain_model_project.pid=###CURRENT_PID### AND tx_showcase_domain_model_project.sys_language_uid IN (-1,0) ORDER BY tx_showcase_domain_model_project.title',
 				'size' => 1,
 				'maxitems' => 1,
 				'eval' => ''

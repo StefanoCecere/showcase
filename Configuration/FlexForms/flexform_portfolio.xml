@@ -57,6 +57,14 @@
 						</TCEforms>
 					</settings.black>
 
+					<settings.video>
+						<TCEforms>
+							<label>Pagina video</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.video>
 				</el>
 			</ROOT>
 		</sDEF>

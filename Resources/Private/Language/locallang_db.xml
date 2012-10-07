@@ -29,6 +29,8 @@
 			<label index="tx_showcase_domain_model_media.image">Image</label>
 			<label index="tx_showcase_domain_model_media.video">Video ID (Vimeo)</label>
 			<label index="tx_showcase_domain_model_media.html">Html</label>
+			<label index="tx_showcase_domain_model_media.highlight">Highlight (showreel)</label>
+			
 		</languageKey>
 	</data>
 </T3locallang>

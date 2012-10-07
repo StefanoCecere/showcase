@@ -27,8 +27,9 @@ $(window).load(function() {
 
 	// Vimeo API nonsense
 	var player = document.getElementById("player_1");
-	$f(player).addEvent("ready", ready);
-
+	if (player) {
+		$f(player).addEvent("ready", ready);
+	}
 	function addEvent(element, eventName, callback) {
 		if (element.addEventListener) {
     		element.addEventListener(eventName, callback, false);
@@ -49,6 +50,7 @@ $(window).load(function() {
 
 	$(".flexslider").flexslider({
 		"video" : true,
+		"mousewheel": true,
 		"startAt": index,
 		"animation": "slide",
 		"after":function(slider){
@@ -106,7 +108,7 @@ $(window).load(function() {
 		<div class="media-thumbs">
 			<f:for each="{project.media}" as="media" iteration="Iterator">
 				<div class="mosaic-block-media">
-						<a href="#" rel="{Iterator.index}">
+						<a href="{k:page.absoluteUrl()}#{Iterator.index}" rel="{Iterator.index}">
 						<f:image src="uploads/showcase/media/{media.image}"
 							width="75c"
 							height="75c"
@@ -124,28 +126,34 @@ $(window).load(function() {
 				<ul class="slides">
 				<f:for each="{project.media}" as="media" iteration="mediaIterator">
 					<li>
-						<a href="uploads/showcase/media/{media.image}" rel="shadowbox[media-1];player=img;" title="{media.title}" target="_blank">
 						<div class="padder">
+
 						<f:if condition="{media.type} == 1">
-							<a href="uploads/showcase/media/{selectedMedia.image}" rel="shadowbox[media-1];player=img;" title="{selectedMedia.title}" target="_blank">
+							<a href="uploads/showcase/media/{media.image}" rel="shadowbox[media-1];player=img;" title="{media.title}" target="_blank">
 							<f:image src="uploads/showcase/media/{media.image}"
-									maxWidth="600"
+									maxWidth="700"
 									height="450c-50"
 									title="{media.title}"
 									alt="{media.title}"
 							/>
+							<f:if condition="{media.title}">
+								<p class="flex-caption">{media.title}</p>
+							</f:if>
 							</a>
 						</f:if>
 
 						<f:if condition="{media.type} == 2">
-							<iframe id="player_{mediaIterator.cycle}" src="http://player.vimeo.com/video/{media.video}?api=1&amp;player_id=player_{mediaIterator.cycle}&amp;title=0&amp;byline=0&amp;portrait=0&amp;color=000000" width="600" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+							<iframe id="player_{mediaIterator.cycle}" src="http://player.vimeo.com/video/{media.video}?api=1&amp;player_id=player_{mediaIterator.cycle}&amp;title=0&amp;byline=0&amp;portrait=0&amp;color=000000" width="700" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 						</f:if>
+
 						</div>
-						</a>
+
 					</li>
 				</f:for>
 				</ul>
+
 			</div>
+			
 
 			<div class="mediainfo">
 				<div class="socialize">

@@ -11,7 +11,7 @@ $TCA['tx_showcase_domain_model_project'] = array(
 		'showRecordFieldList'	=> 'title,description,categories',
 	),
 	'types' => array(
-		'0' => array('showitem'	=> 'title,description,image,categories,
+		'0' => array('showitem'	=> 'hidden,title,description,image,categories,
 			--div--;Media,media'),
 	),
 	'palettes' => array(
@@ -102,14 +102,6 @@ $TCA['tx_showcase_domain_model_project'] = array(
 				'default' => 0
 			),
 		),
-		'container' => array(
-			'exclude'	=> 0,
-			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_project.container',
-			'config'	=> array(
-				'type' => 'check',
-				'default' => 0
-			),
-		),
 		'media' => array(
 			'exclude'	=> 0,
 			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_project.media',
@@ -171,28 +163,6 @@ $TCA['tx_showcase_domain_model_project'] = array(
 				'minitems' => 0,
 				'maxitems' => 1,
 			)
-		),
-		'parent' => array(
-			'exclude'	=> 0,
-			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_project.parent',
-			'config'	=> array(
-				'type' => 'select',
-				'foreign_table' => 'tx_showcase_domain_model_project',
-				'foreign_table_where' => ' AND tx_showcase_domain_model_project.pid = ###CURRENT_PID### AND tx_showcase_domain_model_project.uid != ###THIS_UID### AND tx_showcase_domain_model_project.container = 1',
-				'renderMode' => 'tree',
-				'subType' => 'db',
-				'treeConfig' => array(
-					'parentField' => 'parent',
-					'appearance' => array(
-						'expandAll' => TRUE,
-						'showHeader' => FALSE,
-					),
-				),
-				'size' => 10,
-				'autoSizeMax' => 10,
-				'minitems' => 0,
-				'maxitems' => 3
-			),
 		),
 	),
 );
