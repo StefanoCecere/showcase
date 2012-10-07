@@ -4,11 +4,22 @@
 
 <f:section name="main">
 
+<k:format.nothing>
+	<k:titleTag>{project.title}</k:titleTag>
+</k:format.nothing>
+
 <k:rawHeader content='
+<meta property="og:title" content="{project.title} - Petulia Mattioli" />
+<meta property="og:url" content="{k:page.absoluteUrl()}" />
+<meta property="og:image" content="{k:page.siteUrl()}uploads/showcase/project/{project.image}" />
+<meta property="og:description" content="{project.description}"/>
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Petulia Mattioli" />
+<meta property="fb:admins" content="1273879645" />
+<meta property="fb:app_id" content="436532186384396" />
+
 <link rel="stylesheet" href="typo3conf/ext/showcase/Resources/Public/plugins/flexslider/flexslider.css" type="text/css" media="screen" />
 <script type="text/javascript" src="typo3conf/ext/showcase/Resources/Public/plugins/flexslider/jquery.flexslider-min.js"></script>
-<script type="text/javascript" src="typo3conf/ext/showcase/Resources/Public/plugins/flexslider/froogaloop.js"></script>
-<script type="text/javascript" src="typo3conf/ext/showcase/Resources/Public/plugins/flexslider/jquery.fitvid.js"></script>
 
 <script type="text/javascript">
 $(window).load(function() {
@@ -25,31 +36,8 @@ $(window).load(function() {
 		index = (parseInt(index) || 1) - 1;
 	}
 
-	// Vimeo API nonsense
-	var player = document.getElementById("player_1");
-	if (player) {
-		$f(player).addEvent("ready", ready);
-	}
-	function addEvent(element, eventName, callback) {
-		if (element.addEventListener) {
-    		element.addEventListener(eventName, callback, false);
-		} else {
-			element.attachEvent(eventName, callback, false);
-		}
-	}
-
-	function ready(player_id) {
-		var froogaloop = $f(player_id);
-		froogaloop.addEvent("play", function(data) {
-			$(".flexslider").flexslider("pause");
-		});
-		froogaloop.addEvent("pause", function(data) {
-			$(".flexslider").flexslider("play");
-		});
-	}
 
 	$(".flexslider").flexslider({
-		"video" : true,
 		"mousewheel": true,
 		"startAt": index,
 		"animation": "slide",
@@ -61,10 +49,11 @@ $(window).load(function() {
 </script>
 '/>
 
-<div id="submenu" class="span-24 last">
+<div id="submenu2" class="span-24 last">
 	<div class="contenuto">
-		<ul id="nav" class="dropdown dropdown-horizontal">
+		<ul id="subnav" class="dropdown dropdown-horizontal">
 		<f:for each="{categories}" as="category">
+			<f:if condition="{category.projects}">
 			<f:if condition="{category.uid} == {project.category.uid}">
 				<f:then>
 					<li class="dir active">
@@ -89,6 +78,7 @@ $(window).load(function() {
 			</f:for>
 			</ul>
 		</li>
+			</f:if>
 		</f:for>
 		</ul>
 	</div>
@@ -136,10 +126,10 @@ $(window).load(function() {
 									title="{media.title}"
 									alt="{media.title}"
 							/>
+							</a>
 							<f:if condition="{media.title}">
 								<p class="flex-caption">{media.title}</p>
 							</f:if>
-							</a>
 						</f:if>
 
 						<f:if condition="{media.type} == 2">

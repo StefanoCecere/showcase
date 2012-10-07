@@ -11,6 +11,7 @@
 </f:if>
 	<div class="contenuto">
 	<f:for each="{categories}" as="category">
+		<f:if condition="{category.projects}">
 		<div class="loop-projects">
 			
 			<h5 class="grey"><f:if condition="{category.invisible} == 0">{category.title}</f:if></h5>
@@ -35,6 +36,7 @@
 			</f:for>
 		</div>
 		<div class="clear"></div>
+		</f:if>
 	</f:for>
 	</div>
 </div>
