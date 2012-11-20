@@ -1,14 +1,14 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-Tx_Extbase_Utility_Extension::registerPlugin(
-	$_EXTKEY,
-	'Portfolio',
-	'Showcase: portfolio'
-);
-
+Tx_Extbase_Utility_Extension::registerPlugin($_EXTKEY,'Portfolio','Showcase: portfolio');
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_portfolio'] = 'pi_flexform';
 t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_portfolio', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_portfolio.xml');
+
+Tx_Extbase_Utility_Extension::registerPlugin($_EXTKEY,'Showreel','Showcase: showreel');
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_showreel'] = 'pi_flexform';
+t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_showreel', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_showreel.xml');
+
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Showcase');
 
 // TABLES
@@ -34,11 +34,16 @@ $TCA['tx_showcase_domain_model_project'] = array (
 );
 
 t3lib_extMgm::addLLrefForTCAdescr('tx_showcase_domain_model_category', 'EXT:showcase/Resources/Private/Language/locallang_csh_tx_showcase_domain_model_category.xml');
-t3lib_extMgm::allowTableOnStandardPages('tx_showcase_domain_model_category');
 $TCA['tx_showcase_domain_model_category'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_category',
 		'label' 			=> 'title',
+		'type' => 'main',
+		'typeicon_column' => 'main',
+		'typeicons' => array (
+			'0' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/category_main.gif',
+			'1' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/category_sub.gif',
+		),
 		'tstamp' 			=> 'tstamp',
 		'crdate' 			=> 'crdate',
 		'default_sortby' => 'ORDER BY sorting',
@@ -51,12 +56,10 @@ $TCA['tx_showcase_domain_model_category'] = array (
 			'disabled' => 'hidden'
 			),
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Category.php',
-		'iconfile' 			=> t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_showcase_domain_model_category.gif'
 	)
 );
 
 t3lib_extMgm::addLLrefForTCAdescr('tx_showcase_domain_model_media', 'EXT:showcase/Resources/Private/Language/locallang_csh_tx_showcase_domain_model_media.xml');
-t3lib_extMgm::allowTableOnStandardPages('tx_showcase_domain_model_media');
 $TCA['tx_showcase_domain_model_media'] = array (
 	'ctrl' => array (
 		'title'             => 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_media',

@@ -43,6 +43,21 @@ class Tx_Showcase_Domain_Model_Category extends Tx_Extbase_DomainObject_Abstract
 	protected $title;
 
 	/**
+	 * @var boolean
+	 */
+	protected $main;
+
+	/**
+	 * @var integer
+	 */
+	protected $showPid;
+
+	/**
+	 * @var integer
+	 */
+	protected $showprojectPid;
+	
+	/**
 	 * $invisible
 	 *
 	 * @var integer $invisible
@@ -91,6 +106,27 @@ class Tx_Showcase_Domain_Model_Category extends Tx_Extbase_DomainObject_Abstract
 	 */
 	public function getTitle() {
 		return $this->title;
+	}
+
+	/**
+	 * @return boolean $main
+	 */
+	public function getMain() {
+		return $this->main;
+	}
+
+	/**
+	 * @return integer $showPid
+	 */
+	public function getShowPid() {
+		return $this->showPid;
+	}
+
+	/**
+	 * @return integer $showprojectPid
+	 */
+	public function getShowprojectPid() {
+		return $this->showprojectPid;
 	}
 
 	/**

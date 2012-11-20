@@ -11,7 +11,7 @@ $TCA['tx_showcase_domain_model_project'] = array(
 		'showRecordFieldList'	=> 'title,description,categories',
 	),
 	'types' => array(
-		'0' => array('showitem'	=> 'hidden,title,description,image,categories,
+		'0' => array('showitem'	=> 'hidden,title,description,image,category,categories,
 			--div--;Media,media'),
 	),
 	'palettes' => array(
@@ -124,13 +124,22 @@ $TCA['tx_showcase_domain_model_project'] = array(
 			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_project.category',
 			'config'	=> array(
 				'type' => 'select',
-				'items' => array(
-					array('---', 0)
-				),
 				'foreign_table' => 'tx_showcase_domain_model_category',
-				'foreign_table_where' => ' AND tx_showcase_domain_model_category.pid = ###CURRENT_PID### AND tx_showcase_domain_model_category.hidden = 0 ORDER BY tx_showcase_domain_model_category.sorting',
+				'foreign_table_where' => ' AND tx_showcase_domain_model_category.pid = ###CURRENT_PID### AND tx_showcase_domain_model_category.main = 1 AND tx_showcase_domain_model_category.hidden = 0 ORDER BY tx_showcase_domain_model_category.sorting',
 				'size' => 1,
-				'minitems' => 0,
+				'minitems' => 1,
+				'maxitems' => 1
+			),
+		),
+		'subcategory' => array(
+			'exclude'	=> 0,
+			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_project.subcategory',
+			'config'	=> array(
+				'type' => 'select',
+				'foreign_table' => 'tx_showcase_domain_model_category',
+				'foreign_table_where' => ' AND tx_showcase_domain_model_category.pid = ###CURRENT_PID### AND tx_showcase_domain_model_category.main = 0 AND tx_showcase_domain_model_category.hidden = 0 ORDER BY tx_showcase_domain_model_category.sorting',
+				'size' => 1,
+				'minitems' => 1,
 				'maxitems' => 1
 			),
 		),
@@ -142,7 +151,7 @@ $TCA['tx_showcase_domain_model_project'] = array(
 				'type' => 'select',
 				'MM' => 'tx_showcase_mm_project_category',
 				'foreign_table' => 'tx_showcase_domain_model_category',
-				'foreign_table_where' => '  AND tx_showcase_domain_model_category.pid = ###CURRENT_PID### AND tx_showcase_domain_model_category.hidden = 0 ORDER BY tx_showcase_domain_model_category.sorting',
+				'foreign_table_where' => '  AND tx_showcase_domain_model_category.pid = ###CURRENT_PID###  AND tx_showcase_domain_model_category.main = 0 AND tx_showcase_domain_model_category.hidden = 0 ORDER BY tx_showcase_domain_model_category.sorting',
 				'size' => 15,
 				'autoSizeMax' => 40,
 				'minitems' => 1,

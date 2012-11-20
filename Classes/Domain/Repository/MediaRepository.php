@@ -34,5 +34,27 @@
  
 class Tx_Showcase_Domain_Repository_MediaRepository extends Tx_Extbase_Persistence_Repository {
 
+	/**
+	 * find all records regardless of their storage page, enable fields or language
+	 *
+	 * @return array <Tx_Showcase_Domain_Model_Media>
+	 */
+	public function findShowreel() {
+		$query = $this->createQuery();
+		
+		$constraints = array();
+		$constraints[] = $query->equals('highlight', 1);
+		$query->matching($query->logicalAnd($constraints));
+		//$query->setOrderings(array('category' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING));
+
+		$query->getQuerySettings()->
+			setRespectStoragePage(false)->
+			setRespectEnableFields(TRUE)->
+			setRespectSysLanguage(TRUE)
+		;
+
+		return $query->execute();
+	}
+
 }
 ?>

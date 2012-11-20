@@ -57,11 +57,21 @@ class Tx_Showcase_Controller_MediaController extends Tx_Extbase_MVC_Controller_A
 	 * @return string The rendered list view
 	 */
 	public function listAction() {
-		$medias = $this->mediaRepository->findAll();
-		$this->view->assign('medias', $medias);
+		$media = $this->mediaRepository->findAll();
+		$this->view->assign('media', $media);
 	}
 	
-		
+	
+	/**
+	 * Displays all Medias
+	 *
+	 * @return string The rendered list view
+	 */
+	public function showreelAction() {
+		$mediashowreel = $this->mediaRepository->findShowreel();
+		$this->view->assign('mediashowreel', $mediashowreel);
+	}
+
 	/**
 	 * Displays a single Media
 	 *

@@ -43,6 +43,11 @@ class Tx_Showcase_Domain_Model_Media extends Tx_Extbase_DomainObject_AbstractEnt
 	protected $type;
 
 	/**
+	* @var boolean
+	*/
+	protected $highlight;
+
+	/**
 	 * title
 	 *
 	 * @var string $title
@@ -88,6 +93,14 @@ class Tx_Showcase_Domain_Model_Media extends Tx_Extbase_DomainObject_AbstractEnt
 	protected $html;
 
 	/**
+	 * project
+	 *
+	 * @var Tx_Showcase_Domain_Model_Project $project
+	 * @lazy
+	 */
+	protected $project;
+
+	/**
 	 * Setter for type
 	 *
 	 * @param string $type type
@@ -104,6 +117,13 @@ class Tx_Showcase_Domain_Model_Media extends Tx_Extbase_DomainObject_AbstractEnt
 	 */
 	public function getType() {
 		return $this->type;
+	}
+
+	/**
+	 * @return boolean $highlight
+	 */
+	public function getHighlight() {
+		return $this->highlight;
 	}
 
 	/**
@@ -218,6 +238,13 @@ class Tx_Showcase_Domain_Model_Media extends Tx_Extbase_DomainObject_AbstractEnt
 	 */
 	public function getHtml() {
 		return $this->html;
+	}
+
+	/**
+	 * @return Tx_Showcase_Domain_Model_Project $project
+	 */
+	public function getProject() {
+		return $this->project;
 	}
 
 }

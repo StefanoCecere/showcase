@@ -13,6 +13,8 @@
 			<label index="tx_showcase_domain_model_project.archived">Archived</label>
 			<label index="tx_showcase_domain_model_project.media">Media</label>
 			<label index="tx_showcase_domain_model_project.category">Category</label>
+			<label index="tx_showcase_domain_model_project.subcategory">Subcategory (optional group)</label>
+			
 			<label index="tx_showcase_domain_model_project.image">Preview image</label>
 			<label index="tx_showcase_domain_model_project.parent">Parent Project</label>
 			<label index="tx_showcase_domain_model_project.container">Is this a macro project?</label>
@@ -20,6 +22,9 @@
 			<label index="tx_showcase_domain_model_category">Category</label>
 			<label index="tx_showcase_domain_model_category.title">Title</label>
 			<label index="tx_showcase_domain_model_category.invisible">No Title</label>
+			<label index="tx_showcase_domain_model_category.main">Main Category</label>
+			<label index="tx_showcase_domain_model_category.show_pid">Page to show this category</label>
+			<label index="tx_showcase_domain_model_category.showproject_pid">Page to show single project</label>
 
 			<label index="tx_showcase_domain_model_media">Media</label>
 			<label index="tx_showcase_domain_model_media.type">Type</label>

@@ -45,6 +45,9 @@ $(window).load(function() {
 			window.location.hash = slider.currentSlide + 1;
 		}
 	});
+	$(".padder img").click(function(e){
+		$(".flexslider").flexslider("next");
+	});
 });
 </script>
 '/>
@@ -119,16 +122,17 @@ $(window).load(function() {
 						<div class="padder">
 
 						<f:if condition="{media.type} == 1">
-							<a href="uploads/showcase/media/{media.image}" rel="shadowbox[media-1];player=img;" title="{media.title}" target="_blank">
+							
 							<f:image src="uploads/showcase/media/{media.image}"
 									maxWidth="700"
 									height="450c-50"
 									title="{media.title}"
 									alt="{media.title}"
 							/>
-							</a>
 							<f:if condition="{media.title}">
-								<p class="flex-caption">{media.title}</p>
+								<p class="flex-caption">{media.title} - 
+								<a href="uploads/showcase/media/{media.image}" rel="shadowbox[media-1];player=img;" title="{media.title}" target="_blank">click to enlarge</a>
+								</p>
 							</f:if>
 						</f:if>
 
@@ -139,6 +143,7 @@ $(window).load(function() {
 						</div>
 
 					</li>
+					
 				</f:for>
 				</ul>
 

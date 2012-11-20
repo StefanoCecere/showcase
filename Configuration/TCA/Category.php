@@ -6,10 +6,11 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_showcase_domain_model_category'] = array(
 	'ctrl' => $TCA['tx_showcase_domain_model_category']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList'	=> 'title,invisible',
+		'showRecordFieldList'	=> 'title',
 	),
 	'types' => array(
-		'1' => array('showitem'	=> 'title,invisible,projects'),
+		'0' => array('showitem'	=> 'main,title,projects'),
+		'1' => array('showitem'	=> 'main,title,show_pid,showproject_pid'),
 	),
 	'palettes' => array(
 		'1' => array('showitem'	=> ''),
@@ -61,6 +62,13 @@ $TCA['tx_showcase_domain_model_category'] = array(
 				'type'	=> 'check',
 			)
 		),
+		'main' => array(
+			'exclude'	=> 1,
+			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_category.main',
+			'config'	=> array(
+				'type'	=> 'check',
+			)
+		),
 		'title' => array(
 			'exclude'	=> 0,
 			'label'		=> 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_category.title',
@@ -68,6 +76,26 @@ $TCA['tx_showcase_domain_model_category'] = array(
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim,required'
+			),
+		),
+		'show_pid' => array(
+			'exclude' => 0,
+			'l10n_mode' => 'exclude',
+			'label' => 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_category.show_pid',
+			'config' => array(
+				'type' => 'input',
+				'size' => 4,
+				'eval' => 'int'
+			),
+		),
+		'showproject_pid' => array(
+			'exclude' => 0,
+			'l10n_mode' => 'exclude',
+			'label' => 'LLL:EXT:showcase/Resources/Private/Language/locallang_db.xml:tx_showcase_domain_model_category.showproject_pid',
+			'config' => array(
+				'type' => 'input',
+				'size' => 4,
+				'eval' => 'int'
 			),
 		),
 		'invisible' => array(

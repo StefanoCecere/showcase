@@ -69,16 +69,18 @@ class Tx_Showcase_Domain_Model_Project extends Tx_Extbase_DomainObject_AbstractE
 	 * @validate NotEmpty
 	 */
 	protected $image;
+
 	/**
-	 * media
-	 *
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Showcase_Domain_Model_Media> $media
 	 */
 	protected $media;
 
 	/**
-	 * categories
-	 *
+	 * @var Tx_Showcase_Domain_Model_Category $category
+	 */
+	protected $category;
+
+	/**
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Showcase_Domain_Model_Category> $categories
 	 */
 	protected $categories;
@@ -177,6 +179,13 @@ class Tx_Showcase_Domain_Model_Project extends Tx_Extbase_DomainObject_AbstractE
 	 */
 	public function getMedia() {
 		return $this->media;
+	}
+
+	/**
+	 * @return Tx_Showcase_Domain_Model_Category category
+	 */
+	public function getCategory() {
+		return $this->category;
 	}
 
 	/**

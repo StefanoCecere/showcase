@@ -1,0 +1,47 @@
+{namespace k=Tx_Krur_ViewHelpers}
+
+<f:layout name="Default" />
+<f:section name="main">
+
+<k:rawHeader content='
+<link rel="stylesheet" href="typo3conf/ext/showcase/Resources/Public/plugins/flexslider/flexslider.css" type="text/css" media="screen" />
+<script type="text/javascript" src="typo3conf/ext/showcase/Resources/Public/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<script type="text/javascript">
+$(window).load(function() {
+	$(".flexslider").flexslider({
+		"mousewheel": true,
+		"animation": "slide",
+		"slideshowSpeed": 4000,
+	});
+});
+</script>
+'/>
+
+<div class="media-showreel">
+	<div class="flexslider">
+		<ul class="slides">
+		<f:for each="{mediashowreel}" as="media" iteration="mediaIterator">
+			<li>
+				<div class="padder">
+
+				<f:if condition="{media.type} == 1">
+					<f:link.action pageUid="{media.project.category.showprojectPid}" controller="Project" action="show" arguments="{project : media.project}" title="{media.title}">
+					<f:image src="uploads/showcase/media/{media.image}"
+							maxWidth="500"
+							height="450c-50"
+							title="{media.title}"
+							alt="{media.title}"
+					/>
+					</f:link.action>
+				</f:if>
+
+				</div>
+
+			</li>
+		</f:for>
+		</ul>
+
+	</div>
+</div>
+</f:section>

@@ -44,6 +44,7 @@ class Tx_Showcase_Domain_Repository_CategoryRepository extends Tx_Extbase_Persis
 		
 		$constraints = array();
 		$constraints[] = $query->equals('pid', $storagePid);
+		$constraints[] = $query->equals('main', 0);
 		$query->matching($query->logicalAnd($constraints));
 		$query->setOrderings(array('sorting' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING));
 

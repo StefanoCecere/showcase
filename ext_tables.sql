@@ -7,6 +7,8 @@ CREATE TABLE tx_showcase_domain_model_project (
 	description text NOT NULL,
 	archived tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	media int(11) unsigned DEFAULT '0' NOT NULL,
+	category int(11) unsigned DEFAULT '0' NOT NULL,
+	subcategory int(11) unsigned DEFAULT '0' NOT NULL,
 	categories int(11) unsigned DEFAULT '0' NOT NULL,
 	image varchar(255) DEFAULT '' NOT NULL,
 
@@ -32,6 +34,10 @@ CREATE TABLE tx_showcase_domain_model_category (
 	sorting int(10) DEFAULT '0' NOT NULL,
 	projects int(11) unsigned DEFAULT '0' NOT NULL,
 	invisible tinyint(1) unsigned DEFAULT '0' NOT NULL,
+
+	main tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	show_pid int(11) unsigned DEFAULT '0' NOT NULL,
+	showproject_pid int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -15,4 +15,13 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 			'Media' => '', 
 		)
 );
+
+Tx_Extbase_Utility_Extension::configurePlugin(
+		$_EXTKEY, 'Showreel', array(
+			'Media' => 'showreel',
+		), array(
+			'Media' => 'showreel', 
+		)
+);
+
 ?>
